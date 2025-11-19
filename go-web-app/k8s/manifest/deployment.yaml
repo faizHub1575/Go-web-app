@@ -1,0 +1,23 @@
+# This is a sample deployment manifest file for a simple web application.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-web-app
+  labels:
+    app: go-web-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go-web-app
+  template:
+    metadata:
+      #this is the label for the pod we have created in the deployment we have make sure its should be same in selector of service 
+      labels:
+        app: go-web-app
+    spec:
+      containers:
+      - name: go-web-app
+        image: faiz1575/go-web-app:v1 
+        ports:
+        - containerPort: 8080
